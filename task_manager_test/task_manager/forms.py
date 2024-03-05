@@ -26,3 +26,13 @@ class ChangeTaskStatusForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['status', 'assigned_to']
+
+
+class ChangeTaskTitleDescriptionForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description']
+        widgets = {
+            'title': forms.TextInput(attrs={'placeholder': 'Enter title'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Enter description'}),
+        }

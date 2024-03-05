@@ -1,13 +1,12 @@
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.http import Http404
 from .models import Task
-from .forms import TaskForm, ChangeTaskStatusForm, SingUpForm
+from .forms import TaskForm, ChangeTaskStatusForm, ChangeTaskTitleDescriptionForm, SingUpForm
 
 
 def signup_view(request):
@@ -43,16 +42,19 @@ def task_detail(request, task_id):
     users = User.objects.all()
     status_choices = Task.Status.choices
     status_form = ChangeTaskStatusForm(request.POST or None, initial={'status': task.status})
+    title_description_form = ChangeTaskTitleDescriptionForm(request.POST or None,
+                                                            initial={'title': task.title,
+                                                                     'description': task.description})
 
     if request.method == 'POST':
         if 'delete_task' in request.POST:
             task.delete()
             return HttpResponseRedirect(reverse('task_list'))
 
-        status_form = ChangeTaskStatusForm(request.POST)
         if status_form.is_valid():
+            status_form.save(commit=False)
             task.status = status_form.cleaned_data['status']
-            assigned_to_id = request.POST.get('assigned_to')
+            assigned_to_id = status_form.cleaned_data.get('assigned_to')
             if assigned_to_id:
                 task.assigned_to_id = assigned_to_id
             else:
@@ -60,10 +62,18 @@ def task_detail(request, task_id):
             task.save()
             return redirect('task_detail', task_id=task_id)
 
+        if title_description_form.is_valid():
+            title_description_form.save(commit=False)
+            task.title = title_description_form.cleaned_data['title']
+            task.description = title_description_form.cleaned_data['description']
+            task.save()
+            return redirect('task_detail', task_id=task_id)
+
     return render(request,
                   'task_detail.html',
                   {'task': task,
                    'status_form': status_form,
+                   'title_description_form': title_description_form,
                    'users': users,
                    'status_choices': status_choices})
 
