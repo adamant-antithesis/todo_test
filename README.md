@@ -62,13 +62,14 @@ Once you are in the PostgreSQL shell, create the database "todobase" with the fo
 
 To exit the PostgreSQL shell, type the command \q and press Enter.
 
+
 8. Create .env file on 'task_manager_test' level.
 
    SECRET_KEY=<your_secret_key>
 
    DB_PASSWORD=<your_db_password>
 
-                                                    !!! IMPORTANT !!! 
+                                               !!! IMPORTANT !!! 
 To generate your SECRET_KEY you can use command -
 
     python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
