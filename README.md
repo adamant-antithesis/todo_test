@@ -75,6 +75,8 @@ from django.core.management.utils import get_random_secret_key
 
 get_random_secret_key()
 
+
+
 9.Create and apply migrations (you should be in the task_manager directory at the same level as the manage.py file):
 
     python manage.py makemigrations
