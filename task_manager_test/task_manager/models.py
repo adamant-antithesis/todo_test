@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 class Task(models.Model):
     class Status(models.TextChoices):
-        OPEN = 'Open', 'Відкрито'
-        IN_PROGRESS = 'In Progress', 'В процесі'
-        IN_REVIEW = 'In Review', 'У ревью'
-        ON_HOLD = 'On Hold', 'Утримується'
-        RESOLVED = 'Resolved', 'Вирішено'
-        CLOSED = 'Closed', 'Закрито'
+        OPEN = 'Open'
+        IN_PROGRESS = 'In Progress'
+        IN_REVIEW = 'In Review'
+        ON_HOLD = 'On Hold'
+        RESOLVED = 'Resolved'
+        CLOSED = 'Closed',
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
