@@ -71,7 +71,8 @@ To exit the PostgreSQL shell, type the command \q and press Enter.
 !!! To generate your SECRET_KEY use can use -
 
 from django.core.management.utils import get_random_secret_key
-get_random_secret_key() 
+
+get_random_secret_key()
 
 9.Create and apply migrations (you should be in the task_manager directory at the same level as the manage.py file):
 
