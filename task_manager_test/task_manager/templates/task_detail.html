@@ -8,7 +8,7 @@
     <h1>{{ task.title }}</h1>
     <p><strong>Description:</strong> {{ task.description }}</p>
     <p><strong>Status:</strong> {{ task.status }}</p>
-    <p><strong>Assigned To:</strong> {{ task.assigned_to }}</p>
+    <p><strong>Assigned To:</strong> {% if task.assigned_to %} {{ task.assigned_to }} {% else %} Not Assigned {% endif %}</p>
 
     <form method="post">
         {% csrf_token %}

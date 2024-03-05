@@ -41,6 +41,8 @@ def task_detail(request, task_id):
             assigned_to_id = request.POST.get('assigned_to')
             if assigned_to_id:
                 task.assigned_to_id = assigned_to_id
+            else:
+                task.assigned_to = None
             task.save()
             return redirect('task_detail', task_id=task_id)
 
