@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Task
-from .forms import TaskForm, ChangeTaskStatusForm
-from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from .forms import SingUpForm, LoginForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import Task
+from .forms import TaskForm, ChangeTaskStatusForm, SingUpForm
 
 
 def signup_view(request):
@@ -18,29 +18,16 @@ def signup_view(request):
             return redirect('task_list')
     else:
         form = SingUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 
-def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(request, request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('task_list')
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
-
-
+@login_required
 def task_list(request):
     tasks = Task.objects.all()
     return render(request, 'task_list.html', {"tasks": tasks})
 
 
+@login_required
 def task_detail(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     users = User.objects.all()
@@ -55,7 +42,7 @@ def task_detail(request, task_id):
             if assigned_to_id:
                 task.assigned_to_id = assigned_to_id
             task.save()
-            return redirect('task_detail')
+            return redirect('task_detail', task_id=task_id)
 
     return render(request,
                   'task_detail.html',
@@ -65,6 +52,7 @@ def task_detail(request, task_id):
                    'status_choices': status_choices})
 
 
+@login_required
 def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)

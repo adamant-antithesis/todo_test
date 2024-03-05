@@ -15,5 +15,10 @@
         {{ status_form.as_p }}
         <button type="submit">Save</button>
     </form>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>

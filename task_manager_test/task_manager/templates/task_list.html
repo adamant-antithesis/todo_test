@@ -11,5 +11,9 @@
             <li><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a> - {{ task.status }}</li>
         {% endfor %}
     </ul>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
