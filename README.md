@@ -59,8 +59,9 @@ To exit the PostgreSQL shell, type the command \q and press Enter.
 
 8. Create .env file on 'task_manager_test' level
 
-    SECRET_KEY=<your_secret_key>
-    DB_PASSWORD=<your_db_password>
+   SECRET_KEY=<your_secret_key>
+
+   DB_PASSWORD=<your_db_password>
 
 9.Create and apply migrations (you should be in the task_manager directory at the same level as the manage.py file):
 
