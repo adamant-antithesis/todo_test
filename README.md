@@ -5,7 +5,7 @@ The "Your Task Manager" is a web-based app designed to help users manage their t
 
 Task Management: Users can create tasks with titles, descriptions, and assigned users.
 
-Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Completed," or "Pending."
+Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Resolved," or "On Hold" etc.
 
 User Authentication: Secure user authentication system using Django's built-in authentication framework.
 
