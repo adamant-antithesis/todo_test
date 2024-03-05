@@ -1,16 +1,34 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Welcome to Your Task Manager!</h2>
+                <p class="text-center">Please log in to manage your tasks.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control mx-auto" placeholder="Username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control mx-auto" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
+                </form>
+                <p class="text-center mt-3">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
