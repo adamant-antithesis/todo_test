@@ -10,6 +10,14 @@ from .forms import TaskForm, ChangeTaskStatusForm, ChangeTaskTitleDescriptionFor
 
 
 def signup_view(request):
+    """View function for user registration.
+
+    Renders a registration form and processes POST requests to create a new user.
+    Upon successful registration, logs the user in and redirects to the task list page.
+
+    Returns:
+        HttpResponse: Rendered registration form template.
+    """
     if request.method == 'POST':
         form = SingUpForm(request.POST)
         if form.is_valid():
@@ -26,6 +34,13 @@ def signup_view(request):
 
 @login_required
 def task_list(request):
+    """View function for displaying the list of tasks.
+
+    Retrieves all tasks from the database, paginates the list, and renders it on the task list page.
+
+    Returns:
+        HttpResponse: Rendered task list template.
+    """
     tasks = Task.objects.order_by('id').all()
     paginator = Paginator(tasks, 20)
     page_number = request.GET.get('page')
@@ -35,6 +50,19 @@ def task_list(request):
 
 @login_required
 def task_detail(request, task_id):
+    """View function for displaying the details of a specific task.
+
+    Retrieves the task with the given ID from the database and renders its details along with editable forms
+    for modifying its assignee, status, title, and description. Handles form submissions to update the task details
+    or delete the task.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+        task_id (int): The ID of the task to display.
+
+    Returns:
+        HttpResponse: Rendered task detail template.
+    """
     try:
         task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
@@ -81,6 +109,13 @@ def task_detail(request, task_id):
 
 @login_required
 def create_task(request):
+    """View function for creating a new task.
+
+    Renders a form for creating a new task and processes POST requests to save the new task to the database.
+
+    Returns:
+        HttpResponse: Rendered create task form template.
+    """
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
