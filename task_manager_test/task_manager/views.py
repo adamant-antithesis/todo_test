@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.http import Http404
 from .models import Task
 from .forms import TaskForm, ChangeTaskStatusForm, SingUpForm
 
@@ -33,12 +36,19 @@ def task_list(request):
 
 @login_required
 def task_detail(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        return HttpResponseRedirect(reverse('task_list'))
     users = User.objects.all()
     status_choices = Task.Status.choices
     status_form = ChangeTaskStatusForm(request.POST or None, initial={'status': task.status})
 
     if request.method == 'POST':
+        if 'delete_task' in request.POST:
+            task.delete()
+            return HttpResponseRedirect(reverse('task_list'))
+
         status_form = ChangeTaskStatusForm(request.POST)
         if status_form.is_valid():
             task.status = status_form.cleaned_data['status']

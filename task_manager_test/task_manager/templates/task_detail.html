@@ -16,6 +16,12 @@
         <button type="submit">Save</button>
     </form>
 
+    <form method="post" action="{% url 'task_detail' task.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="delete_task" value="true">
+        <button type="submit">Delete Task</button>
+    </form>
+
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Logout</button>
