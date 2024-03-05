@@ -2,6 +2,23 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm, ChangeTaskStatusForm
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from .forms import SingUpForm
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SingUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('task_list')
+    else:
+        form = SingUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 
 def task_list(request):
@@ -19,6 +36,9 @@ def task_detail(request, task_id):
         status_form = ChangeTaskStatusForm(request.POST)
         if status_form.is_valid():
             task.status = status_form.cleaned_data['status']
+            assigned_to_id = request.POST.get('assigned_to')
+            if assigned_to_id:
+                task.assigned_to_id = assigned_to_id
             task.save()
             return redirect('task_detail', task_id=task_id)
 
