@@ -8,7 +8,7 @@
   <h1>Task List</h1>
   <ul>
     {% for task in tasks %}
-      <li>{{ task.title - {{ task.status }} - {{ task.assigned_user  }}</li>
+      <li>{{ task.title }} - {{ task.status }} - {{ task.assigned_user  }}</li>
     {% endfor %}
   </ul>
 </body>
