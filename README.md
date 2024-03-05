@@ -1,5 +1,5 @@
 Project "Your Task Manager"
-The "Your Task Manager" is a web-based platform designed to help users manage their tasks. It allows users to create, update, delete, and track the status of tasks.
+The "Your Task Manager" is a web-based app designed to help users manage their tasks. It allows users to create, update, delete, and track the status of tasks.
 
 ---Features
 
