@@ -68,7 +68,8 @@ To exit the PostgreSQL shell, type the command \q and press Enter.
    
    DB_PASSWORD=<your_db_password>
 
-!!! To generate your SECRET_KEY use can use -
+                        !!! IMPORTANT !!! 
+To generate your SECRET_KEY use can use -
 
 from django.core.management.utils import get_random_secret_key
 
