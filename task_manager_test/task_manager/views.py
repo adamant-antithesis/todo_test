@@ -3,10 +3,10 @@ from .models import Task
 from .forms import TaskForm, ChangeTaskStatusForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from .forms import SingUpForm
+from .forms import SingUpForm, LoginForm
 
 
-def signup(request):
+def signup_view(request):
     if request.method == 'POST':
         form = SingUpForm(request.POST)
         if form.is_valid():
@@ -19,6 +19,21 @@ def signup(request):
     else:
         form = SingUpForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('task_list')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
 def task_list(request):
@@ -40,7 +55,7 @@ def task_detail(request, task_id):
             if assigned_to_id:
                 task.assigned_to_id = assigned_to_id
             task.save()
-            return redirect('task_detail', task_id=task_id)
+            return redirect('task_detail')
 
     return render(request,
                   'task_detail.html',
