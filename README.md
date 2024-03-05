@@ -1,7 +1,7 @@
 Project "Your Task Manager"
 The "Your Task Manager" is a web-based platform designed to help users manage their tasks. It allows users to create, update, delete, and track the status of tasks.
 
-Features
+---Features
 
 Task Management: Users can create tasks with titles, descriptions, and assigned users.
 
@@ -13,14 +13,14 @@ Responsive Design: The application is designed to be responsive and accessible o
 
 Pagination: Tasks are paginated for better navigation and performance.
 
-Local Server Setup:
+---Local Server Setup:
 
 Requirements
 
     Python 3.x
     Django 3.x
     
-Installation and Configuration
+---Installation and Configuration
 
 1.Clone the repository:
 
@@ -81,7 +81,7 @@ To exit the PostgreSQL shell, type the command \q and press Enter.
 
 
 
-Usage
+---Usage
 
 Signup/Login: New users can sign up for an account, while existing users can log in using their credentials.
 
