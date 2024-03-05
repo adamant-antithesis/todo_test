@@ -41,7 +41,8 @@ def task_detail(request, task_id):
         return HttpResponseRedirect(reverse('task_list'))
     users = User.objects.all()
     status_choices = Task.Status.choices
-    status_form = ChangeTaskStatusForm(request.POST or None, initial={'status': task.status})
+    status_form = ChangeTaskStatusForm(request.POST or None,
+                                       initial={'status': task.status, 'assigned_to': task.assigned_to})
     title_description_form = ChangeTaskTitleDescriptionForm(request.POST or None,
                                                             initial={'title': task.title,
                                                                      'description': task.description})
