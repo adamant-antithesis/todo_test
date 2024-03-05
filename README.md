@@ -1,11 +1,11 @@
 Project "Your Task Manager"
-The "Your Task Manager" is a web-based platform designed to help users manage their tasks. It allows users to create, update, delete, and track the status of tasks.
+The "Your Task Manager" is a web-based app designed to help users manage their tasks. It allows users to create, update, delete, and track the status of tasks.
 
 ---Features
 
 Task Management: Users can create tasks with titles, descriptions, and assigned users.
 
-Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Completed," or "Pending."
+Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Resolved," or "On Hold" etc.
 
 User Authentication: Secure user authentication system using Django's built-in authentication framework.
 
@@ -18,7 +18,12 @@ Pagination: Tasks are paginated for better navigation and performance.
 Requirements
 
     Python 3.x
-    Django 3.x
+    asgiref==3.7.2
+    Django==5.0.3
+    psycopg2==2.9.9
+    python-dotenv==1.0.1
+    sqlparse==0.4.4
+    tzdata==2024.1
     
 ---Installation and Configuration
 
@@ -57,10 +62,17 @@ Once you are in the PostgreSQL shell, create the database "todobase" with the fo
 
 To exit the PostgreSQL shell, type the command \q and press Enter.
 
-8. Create .env file on 'task_manager_test' level
+8. Create .env file on 'task_manager_test' level.
 
-    SECRET_KEY=<your_secret_key>
-    DB_PASSWORD=<your_db_password>
+   SECRET_KEY=<your_secret_key>
+
+   DB_PASSWORD=<your_db_password>
+
+                                                    !!! IMPORTANT !!! 
+To generate your SECRET_KEY you can use command -
+
+    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+
 
 9.Create and apply migrations (you should be in the task_manager directory at the same level as the manage.py file):
 
@@ -89,6 +101,6 @@ Task Creation: Users can create new tasks by providing a title, description, and
 
 Task Management: Users can view, update, and delete tasks from their dashboard.
 
-Status Updates: Tasks can be marked as "In Progress," "Completed," or "Pending" etc. to track their progress.
+Status Updates: Tasks can be marked as "In Progress," "Resolved," or "On Hold" etc. to track their progress.
 
 Logout: Users can log out of their accounts to securely end their sessions.
