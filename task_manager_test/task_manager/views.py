@@ -23,7 +23,7 @@ def signup_view(request):
 
 @login_required
 def task_list(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.order_by('id').all()
     return render(request, 'task_list.html', {"tasks": tasks})
 
 

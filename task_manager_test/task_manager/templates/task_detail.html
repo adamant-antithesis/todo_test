@@ -5,7 +5,7 @@
     <title>Task Detail</title>
 </head>
 <body>
-    <h1>{{ task.title }}</h1>
+    <h1>Task #{{ task.id }}: {{ task.title }}</h1>
     <p><strong>Description:</strong> {{ task.description }}</p>
     <p><strong>Status:</strong> {{ task.status }}</p>
     <p><strong>Assigned To:</strong> {% if task.assigned_to %} {{ task.assigned_to }} {% else %} Not Assigned {% endif %}</p>

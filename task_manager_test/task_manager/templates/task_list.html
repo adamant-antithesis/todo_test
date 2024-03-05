@@ -8,7 +8,7 @@
     <h1>Task List</h1>
     <ul>
         {% for task in tasks %}
-            <li><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a> - {{ task.status }}</li>
+            <li><a href="{% url 'task_detail' task.id %}">Task #{{ task.id }}: {{ task.title }}</a> - {{ task.status }}</li>
         {% endfor %}
     </ul>
     <form action="{% url 'logout' %}" method="post">
