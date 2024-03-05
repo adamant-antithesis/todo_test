@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Task List</title>
+    <meta charset="UTF-8">
+    <title>Task List</title>
 </head>
 <body>
-  <h1>Task List</h1>
-  <ul>
-    {% for task in tasks %}
-      <li>{{ task.title }} - {{ task.status }} - {{ task.assigned_user  }}</li>
-    {% endfor %}
-  </ul>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a> - {{ task.status }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

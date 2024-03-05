@@ -8,5 +8,7 @@ class TaskForm(forms.ModelForm):
         fields = ['title', 'description', 'status', 'assigned_to']
 
 
-class ChangeTaskStatusForm(forms.Form):
-    status = forms.ChoiceField(choices=Task.Status.choices)
+class ChangeTaskStatusForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['status', 'assigned_to']

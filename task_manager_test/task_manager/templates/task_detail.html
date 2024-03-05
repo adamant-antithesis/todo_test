@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p><strong>Description:</strong> {{ task.description }}</p>
+    <p><strong>Status:</strong> {{ task.status }}</p>
+    <p><strong>Assigned To:</strong> {{ task.assigned_to }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ status_form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
