@@ -65,10 +65,10 @@ To exit the PostgreSQL shell, type the command \q and press Enter.
 8. Create .env file on 'task_manager_test' level.
 
    SECRET_KEY=<your_secret_key>
-   
+
    DB_PASSWORD=<your_db_password>
 
-                        !!! IMPORTANT !!! 
+                                                    !!! IMPORTANT !!! 
 To generate your SECRET_KEY use can use -
 
 from django.core.management.utils import get_random_secret_key
