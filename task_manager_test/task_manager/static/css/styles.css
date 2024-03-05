@@ -1,15 +1,12 @@
 body {
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .login-container {
     width: 100%;
     max-width: 1000px;
     padding: 20px;
+    margin-top: 150px;
 }
 
 .signup-container {
@@ -20,6 +17,7 @@ body {
     background-color: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
 }
 
 .form-group {
@@ -54,4 +52,51 @@ body {
 
 .text-center {
     text-align: center;
+}
+
+.task-list-container {
+    padding-top: 20px;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-info {
+    margin: 0 10px;
+    margin-left: 3px;
+}
+
+.pagination a {
+    margin-right: 5px;
+    border: 1px solid #007bff;
+    padding: 8px 10px;
+    color: #007bff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .page-link {
+    cursor: pointer;
+}
+
+.pagination .page-link:hover {
+    text-decoration: none;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.logout-button {
+    float: right;
+    margin-bottom: 15px;
 }
