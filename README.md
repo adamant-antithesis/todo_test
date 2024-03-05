@@ -18,7 +18,12 @@ Pagination: Tasks are paginated for better navigation and performance.
 Requirements
 
     Python 3.x
-    Django 3.x
+    asgiref==3.7.2
+    Django==5.0.3
+    psycopg2==2.9.9
+    python-dotenv==1.0.1
+    sqlparse==0.4.4
+    tzdata==2024.1
     
 ---Installation and Configuration
 
