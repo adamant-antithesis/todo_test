@@ -95,6 +95,6 @@ Task Creation: Users can create new tasks by providing a title, description, and
 
 Task Management: Users can view, update, and delete tasks from their dashboard.
 
-Status Updates: Tasks can be marked as "In Progress," "Completed," or "Pending" etc. to track their progress.
+Status Updates: Tasks can be marked as "In Progress," "Resolved," or "On Hold" etc. to track their progress.
 
 Logout: Users can log out of their accounts to securely end their sessions.
