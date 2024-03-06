@@ -3,15 +3,15 @@ The "Your Task Manager" is a web-based app designed to help users manage their t
 
 ---Features
 
-Task Management: Users can create tasks with titles, descriptions, and assigned users.
+-Task Management: Users can create tasks with titles, descriptions, and assigned users.
 
-Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Resolved," or "On Hold" etc.
+-Status Tracking: Tasks can be assigned different statuses such as "In Progress," "Resolved," or "On Hold" etc.
 
-User Authentication: Secure user authentication system using Django's built-in authentication framework.
+-User Authentication: Secure user authentication system using Django's built-in authentication framework.
 
-Responsive Design: The application is designed to be responsive and accessible on various devices and screen sizes.
+-Responsive Design: The application is designed to be responsive and accessible on various devices and screen sizes.
 
-Pagination: Tasks are paginated for better navigation and performance.
+-Pagination: Tasks are paginated for better navigation and performance.
 
 ---Local Server Setup:
 
@@ -93,16 +93,3 @@ To generate your SECRET_KEY you can use command -
 
     python manage.py runserver
 
-
-
----Usage
-
-Signup/Login: New users can sign up for an account, while existing users can log in using their credentials.
-
-Task Creation: Users can create new tasks by providing a title, description, and optionally assigning them to other users.
-
-Task Management: Users can view, update, and delete tasks from their dashboard.
-
-Status Updates: Tasks can be marked as "In Progress," "Resolved," or "On Hold" etc. to track their progress.
-
-Logout: Users can log out of their accounts to securely end their sessions.
