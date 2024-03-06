@@ -42,6 +42,7 @@ Requirements
 4. Activate the virtual environment:
 
     On Windows - env\Scripts\activate
+   
     On macOS and Linux - source env/bin/activate
 
 5.Install dependencies:
@@ -54,7 +55,7 @@ Access the PostgreSQL shell by using the following command and press Enter:
 
     psql -U <username> (use the default username - postgres, password - postgres)
 
-Once you are in the PostgreSQL shell, create the database "todobase" with the following command:
+Once you are in the PostgreSQL shell, create the database "task_manager_db" with the following command:
 
     CREATE DATABASE task_manager_db;
 
