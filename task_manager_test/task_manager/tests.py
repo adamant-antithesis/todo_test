@@ -43,6 +43,7 @@ class TaskDetailViewTest(TestCase):
         self.client.login(username='testuser', password='12345')
         response = self.client.post(reverse('task_detail', args=[self.task.id]),
                                     {'status': 'In Review', 'assigned_to': self.user.id})
+        self.assertEqual(response.status_code, 302)
         updated_task = Task.objects.get(id=self.task.id)
         self.assertEqual(updated_task.status, 'In Review')
         self.assertEqual(updated_task.assigned_to, self.user)
@@ -53,6 +54,7 @@ class TaskDetailViewTest(TestCase):
         response = self.client.post(reverse('task_detail', args=[self.task.id]),
                                     {'title': 'Updated Task Title', 'description': 'Updated Task Description'})
         updated_task = Task.objects.get(id=self.task.id)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(updated_task.title, 'Updated Task Title')
         self.assertEqual(updated_task.description, 'Updated Task Description')
 
