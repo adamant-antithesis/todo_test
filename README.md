@@ -76,7 +76,7 @@ To generate your SECRET_KEY you can use command -
     python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 
 
-9.Create and apply migrations (you should be in the task_manager directory at the same level as the manage.py file):
+9.Create and apply migrations (you should be in the 'task_manager_test' directory at the same level as the manage.py file):
 
     python manage.py makemigrations
     python manage.py migrate
